@@ -71,6 +71,14 @@ document.querySelector("#submit").onclick = () => {
   document.querySelector("#popup").close();
 };
 
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 function getSnippets(num) {
   getDocs(query(collectionRef, limit(num)))
     .then((snapshot) => {
@@ -80,6 +88,7 @@ function getSnippets(num) {
       snapshot.docs.forEach((doc) => {
         codes.push({ ...doc.data() });
       });
+      codes = shuffleArray(codes);
       codes.forEach((snippet) => {
         let card = document.createElement("div");
         let code = document.createElement("pre");
