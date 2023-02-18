@@ -27,6 +27,12 @@ const firebaseConfig = {
 };
 initializeApp(firebaseConfig);
 
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-DL77ELTZXJ');
+
 const db = getFirestore();
 const collectionRef = collection(db, "snippets");
 const auth = getAuth();
@@ -66,6 +72,7 @@ document.querySelector("#submit").onclick = () => {
     title: document.querySelector("#add-title").value,
     code: document.querySelector("#add-code").value,
     lang: document.querySelector("#add-lang").value,
+    created: Date.now(),
     author: username,
   });
   document.querySelector("#popup").close();
@@ -80,7 +87,7 @@ function shuffleArray(array) {
 }
 
 function getSnippets(num) {
-  getDocs(query(collectionRef, limit(num)))
+  getDocs(query(collectionRef, orderBy("created", "desc"), limit(num)))
     .then((snapshot) => {
       document.querySelector("#snippets").innerHTML = "";
       let codes = [];
@@ -107,7 +114,7 @@ function getSnippets(num) {
     .catch(console.error);
 }
 
-getSnippets(9);
+getSnippets(15);
 document.querySelector("#more").onclick = () =>
   getSnippets(prompt("How Many Snippets?"));
 document.querySelector("#add").onclick = () =>
