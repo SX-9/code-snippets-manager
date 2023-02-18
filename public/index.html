@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="life.js" type="module" defer></script>
+    <title>Code Snippets Manager</title>
+</head>
+<body>
+    <div id="bar">
+        <h2 id="title">Code Snippets Manager </h2>
+        <button id="auth" class="display-noauth">Sign In</button>
+        <button id="unauth" class="display-auth">Sign Out</button>
+        <h2 class="display-auth">Hey <span id="name"></span></h2>
+        <img class="display-auth" alt="Profile Picture" id="pfp">
+    </div>
+    <dialog id="popup">
+        <h1>Add A Snippet</h1>
+        <p>Hit [Esc] To Close | <button id="submit">Submit</button></p>
+        <input type="text" id="add-title" placeholder="Title Here">
+        <input type="text" id="add-lang" placeholder="Lang Here (js, py, etc...)">
+        <textarea id="add-code" placeholder="// Code Here: console.log('Hey');"></textarea>
+    </dialog>
+    <div class="spacer"></div>
+    <div id="snippets"></div>
+    <div class="spacer"></div>
+    <button id="more">View More</button>
+    <button class="display-auth" id="add">Add Snippet</button>
+</body>
+</html>
