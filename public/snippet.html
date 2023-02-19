@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DL77ELTZXJ"></script>
     <script src="js/life.js" type="module" defer></script>
-    <script src="js/index.js" type="module" defer></script>
+    <script src="js/snippet.js" type="module" defer></script>
     <title>Code Snippets Manager</title>
 </head>
 <body>
@@ -27,9 +27,9 @@
         <textarea id="add-code" placeholder="// Code Here: console.log('Hey');"></textarea>
     </dialog>
     <div class="spacer"></div>
-    <div id="snippets"></div>
-    <div class="spacer"></div>
-    <button id="more">View More</button>
+    <h1 id="snippet-title"></h1>
+    <pre id="snippet-code"></pre>
+    <hr size="1">
     <p>Made By <a href="https://sx9.is-a.dev">sx9.is-a.dev</a></p>
     <button class="display-auth" id="add">Add Snippet</button>
 </body>

@@ -48,10 +48,11 @@ div.snippet {
     border-bottom-right-radius: .5em;
     border-bottom-left-radius:.5em;
 }
-div.snippet > pre {
+div.snippet pre {
     padding-left: 1em;
     white-space: pre-wrap;
 }
+div.snippet button { margin: 1em; margin-left: 0; }
 
 button#add {
     position: fixed;
@@ -83,6 +84,15 @@ dialog textarea {
     width: 98%;
     height: 45%;
     resize: none;
+}
+
+h1#snippet-title {
+    margin-left: .5em;
+}
+
+pre#snippet-code {
+    margin-left: 3em;
+    margin-bottom: 2em;
 }
 
 @media only screen and (max-width: 600px) {

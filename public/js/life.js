@@ -2,13 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebas
 import {
   getFirestore,
   collection,
-  getDoc,
-  getDocs,
   addDoc,
-  query,
-  orderBy,
-  limit,
-  doc,
 } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 import {
   getAuth,
@@ -28,13 +22,15 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
+function gtag() {
+  dataLayer.push(arguments);
+}
+gtag("js", new Date());
 
-gtag('config', 'G-DL77ELTZXJ');
+gtag("config", "G-DL77ELTZXJ");
 
 const db = getFirestore();
-const collectionRef = collection(db, "snippets");
+const snippetsRef = collection(db, "snippets");
 const auth = getAuth();
 
 let username;
@@ -68,7 +64,7 @@ document.querySelector("#auth").onclick = () =>
   signInWithPopup(auth, new GithubAuthProvider());
 
 document.querySelector("#submit").onclick = () => {
-  addDoc(collection(db, "snippets"), {
+  addDoc(snippetsRef, {
     title: document.querySelector("#add-title").value,
     code: document.querySelector("#add-code").value,
     lang: document.querySelector("#add-lang").value,
@@ -76,6 +72,7 @@ document.querySelector("#submit").onclick = () => {
     author: username,
   });
   document.querySelector("#popup").close();
+  getSnippets(15, "created", false);
 };
 
 function shuffleArray(array) {
@@ -85,37 +82,3 @@ function shuffleArray(array) {
   }
   return array;
 }
-
-function getSnippets(num) {
-  getDocs(query(collectionRef, orderBy("created", "desc"), limit(num)))
-    .then((snapshot) => {
-      document.querySelector("#snippets").innerHTML = "";
-      let codes = [];
-      console.clear();
-      snapshot.docs.forEach((doc) => {
-        codes.push({ ...doc.data() });
-      });
-      codes = shuffleArray(codes);
-      codes.forEach((snippet) => {
-        let card = document.createElement("div");
-        let code = document.createElement("pre");
-        let title = document.createElement("h3");
-
-        card.classList.add("snippet");
-        code.innerText = snippet.code;
-        title.innerText =
-          snippet.author + " / " + snippet.title + " - " + snippet.lang;
-
-        card.appendChild(title);
-        card.appendChild(code);
-        document.querySelector("#snippets").appendChild(card);
-      });
-    })
-    .catch(console.error);
-}
-
-getSnippets(15);
-document.querySelector("#more").onclick = () =>
-  getSnippets(prompt("How Many Snippets?"));
-document.querySelector("#add").onclick = () =>
-  document.querySelector("#popup").showModal();
