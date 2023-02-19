@@ -37,7 +37,7 @@ const auth = getAuth();
 let username;
 auth.onAuthStateChanged((user) => {
   if (user) {
-    username = user.reloadUserInfo.screenName;
+    username = user.reloadUserInfo.screenName || 'Anonymous';
     document
       .querySelectorAll(".display-auth")
       .forEach((el) => (el.style.display = "block"));
