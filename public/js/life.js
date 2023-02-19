@@ -7,6 +7,7 @@ import {
 import {
   getAuth,
   signInWithPopup,
+  signInAnonymously,
   GithubAuthProvider,
   signOut,
 } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
@@ -60,8 +61,13 @@ auth.onAuthStateChanged((user) => {
 
 document.querySelector("#unauth").onclick = () => signOut(auth);
 
-document.querySelector("#auth").onclick = () =>
-  signInWithPopup(auth, new GithubAuthProvider());
+document.querySelector("#auth").onclick = () => {
+  if (prompt("Sign In With Github?\nType 'yes' To Continue Or Anything Else To Sign In Anoymously").toLocaleLowerCase() !== "yes") {
+    signInAnonymously(auth);
+  } else {
+    signInWithPopup(auth, new GithubAuthProvider());
+  }
+}
 
 document.querySelector("#submit").onclick = () => {
   addDoc(snippetsRef, {

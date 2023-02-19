@@ -17,7 +17,7 @@
         <button id="auth" class="display-noauth">Sign In</button>
         <button id="unauth" class="display-auth">Sign Out</button>
         <h2 class="display-auth">Hey <span id="name"></span></h2>
-        <img class="display-auth" alt="Profile Picture" id="pfp">
+        <img class="display-auth" onerror="this.remove()" alt="Profile Picture" id="pfp">
     </div>
     <dialog id="popup">
         <h1>Add A Snippet</h1>
