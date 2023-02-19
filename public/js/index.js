@@ -23,15 +23,15 @@ const snippetsRef = collection(db, "snippets");
 
 function createCard(snippet) {
   let card = document.createElement("div");
-  let code = document.createElement("pre");
   let title = document.createElement("h3");
   let view = document.createElement("button");
+  let code = document.createElement("pre");
 
   card.classList.add("snippet");
-  code.innerText = snippet.code;
   title.innerText = snippet.author + " / " + snippet.title + "." + snippet.lang;
   view.innerText = "View";
   view.onclick = () => window.open("snippet.html?id=" + snippet.id);
+  code.innerText = snippet.code;
 
   card.appendChild(title);
   card.appendChild(code);

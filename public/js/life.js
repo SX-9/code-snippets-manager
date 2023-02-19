@@ -72,7 +72,6 @@ document.querySelector("#submit").onclick = () => {
     author: username,
   });
   document.querySelector("#popup").close();
-  getSnippets(15, "created", false);
 };
 
 function shuffleArray(array) {

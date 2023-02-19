@@ -1,108 +1,141 @@
 * {
-    font-family: monospace;
+  font-family: monospace;
 }
 
 body {
-    background: black;
-    color: white;
+  background: black;
+  color: white;
 }
 
 div#bar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 2em;
-    width: 100%;
-    display: flex;
-    gap: 1em;
-    align-items: center;
-    justify-content: center;
-    border-bottom: .2em white dotted;
-    padding: 1em;
-    background: #000000c9;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 2em;
+  width: 100%;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 0.2em white dotted;
+  padding: 1em;
+  background: #000000c9;
 }
-h2 { margin: 0; padding: 0; }
-span#name { color: lightgreen; }
+h2 {
+  margin: 0;
+  padding: 0;
+}
+span#name {
+  color: lightgreen;
+}
 button {
-    border: none;
-    font-weight: bold;
+  border: none;
+  font-weight: bold;
 }
 img#pfp {
-    border-radius: 50%;
-    height: 150%;
-    object-fit: cover;
+  border-radius: 50%;
+  height: 150%;
+  object-fit: cover;
 }
 
-div.spacer { height: 4.3em; }
+div.spacer {
+  height: 4.3em;
+}
 div#snippets {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1em;
 }
 
 div.snippet {
-    padding-left: 1em;
-    border: .1em grey solid;
-    border-top-right-radius: .5em;
-    border-top-left-radius: .5em;
-    border-bottom-right-radius: .5em;
-    border-bottom-left-radius:.5em;
+  padding-left: 1em;
+  border: 0.1em grey solid;
+  border-top-right-radius: 0.5em;
+  border-top-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  overflow: auto;
 }
-div.snippet pre {
-    padding-left: 1em;
-    white-space: pre-wrap;
+div.snippet button {
+  margin: 1em;
+  margin-left: 0;
 }
 div.snippet button { margin: 1em; margin-left: 0; }
+div.snippet pre {
+  margin: 0;
+  margin-left: 1em;
+  margin-right: .5em;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
 
 button#add {
-    position: fixed;
-    bottom: 1em;
-    right: 1em;
-    font-size: 2em;
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  font-size: 2em;
 }
 dialog {
-    background: black;
-    color: white;
-    border-top-right-radius: .5em;
-    border-top-left-radius: .5em;
-    border-bottom-right-radius: .5em;
-    border-bottom-left-radius: .5em;
-    padding: 1em;
-    width: 50%;
-    height: 50%;
+  background: black;
+  color: white;
+  border-top-right-radius: 0.5em;
+  border-top-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  padding: 1em;
+  width: 50%;
+  height: 50%;
 }
-dialog::backdrop { background: #00000080; }
+dialog::backdrop {
+  background: #00000080;
+}
 
-dialog input, dialog textarea {
-    display: block;
-    width: 50%;
-    background: #3d3d3d;
-    color: white;
-    margin: .3em;
+dialog input,
+dialog textarea {
+  display: block;
+  width: 50%;
+  background: #3d3d3d;
+  color: white;
+  margin: 0.3em;
 }
 dialog textarea {
-    width: 98%;
-    height: 45%;
-    resize: none;
+  width: 98%;
+  height: 45%;
+  resize: none;
 }
 
 h1#snippet-title {
-    margin-left: .5em;
+  margin-left: 0.5em;
 }
-
-pre#snippet-code {
-    margin-left: 3em;
-    margin-bottom: 2em;
+pre {
+  margin-left: 3em;
+  margin-bottom: 2em;
 }
+/* :not(pre) > code[class*="language-"],
+pre[class*="language-"],
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  background: black;
+}
+code[class*="language-"],
+pre[class*="language-"] {
+  white-space: pre-wrap;
+  word-break: break-all;
+  color: white;
+  text-shadow: none;
+} */
 
 @media only screen and (max-width: 600px) {
-    div#snippets {
-        grid-template-columns: 1fr;
-    }
-    div#bar button {
-        display: inline;
-    }
-    div#bar h2#title {
-        text-align: right;
-    }
+  div#snippets {
+    grid-template-columns: 1fr;
+  }
+  div#bar button {
+    display: inline;
+  }
+  div#bar h2#title {
+    text-align: right;
+  }
 }
